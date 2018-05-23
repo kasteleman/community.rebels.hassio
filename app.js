@@ -26,8 +26,11 @@ var es = new EventSource( url, config );
 // REST
 const http = axios.create( {
   baseURL: 'http://' + IP + ':' + PORT + '/api/',
-  timeout: 1000,
-  config
+  timeout: 10000,
+  headers: {
+    'x-ha-access': PASSWORD,
+    'Content-Type': 'application/json'
+  }
 } );
 
 class HassIO extends Homey.App {
